@@ -8,15 +8,14 @@ router.get('/', function(req, res, next) {
   	if(success)
   	{
   		var $ = cheerio.load(html);
-  		var movie = $(".titleColumn");
+  		var movie = $(".lister-list");
   		// return res.render("index", { data : success})
   		console.log(movie.html());
-  		var success = movie.find("table").text();
+  		var success = movie.html();
   		return res.render("index", { data : success})
   	}
   	else
   	{
-      
   		console.log(err);
   	}
   });
