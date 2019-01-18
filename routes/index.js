@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   request("https://www.imdb.com/chart/top?ref_=nv_mv_250", function(err, success, html){
   	if(success)
   	{
-      var data = {};
+      var success = [];
   		var $ = cheerio.load(html);
   		$('tr').each((i, el) => {
       const title = $(el)
@@ -22,10 +22,10 @@ router.get('/', function(req, res, next) {
       //   .replace(/,/, '');
 
       // Write Row To CSV
-      data.push({title : title, link: link});
-      console.log(`${title}, ${link}\n`);
+      success.push({title : title, link: link});
+      // console.log(`${title}, ${link}\n`);
     });
-  		// return res.render("index", { data : success})
+  		return res.render("index", { data : success})
   	}
   	else
   	{
