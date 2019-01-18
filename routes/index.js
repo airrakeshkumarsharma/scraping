@@ -7,12 +7,25 @@ router.get('/', function(req, res, next) {
   request("https://www.imdb.com/chart/top?ref_=nv_mv_250", function(err, success, html){
   	if(success)
   	{
+      var data = {};
   		var $ = cheerio.load(html);
-  		var movie = $(".lister-list");
+  		$('tr').each((i, el) => {
+      const title = $(el)
+        .find('.titleColumn')
+        .text();
+      const link = $(el)
+        .find('.secondaryInfo')
+        .text();
+      // const date = $(el)
+      //   .find('.post-date')
+      //   .text()
+      //   .replace(/,/, '');
+
+      // Write Row To CSV
+      data.push({title : title, link: link});
+      console.log(`${title}, ${link}\n`);
+    });
   		// return res.render("index", { data : success})
-  		console.log(movie.html());
-  		var success = movie.html();
-  		return res.render("index", { data : success})
   	}
   	else
   	{
