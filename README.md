@@ -1,6 +1,6 @@
 # web scraping using mean stack
 
-This is just an exaple that how to extract data from the web page to particular web page using web scraping technique
+This is just an example that how to extract data from the web page to particular web page using web scraping technique
 
 Here data is extracted from the https://www.imdb.com/chart/top?ref_=nv_mv_250 
 
