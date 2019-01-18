@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
       const title = $(el)
         .find('.titleColumn')
         .text();
-      const link = $(el)
+      const yr = $(el)
         .find('.secondaryInfo')
         .text();
       // const date = $(el)
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
       //   .replace(/,/, '');
 
       // Write Row To CSV
-      success.push({title : title, link: link});
+      success.push({title : title, yr: yr});
       // console.log(`${title}, ${link}\n`);
     });
   		return res.render("index", { data : success})
