@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
   		var movie = $(".seen-collection");
   		// return res.render("index", { data : success})
   		console.log(movie.html());
+  		var success = movie.html();
+  		return res.render("index", { data : success})
   	}
   	else
   	{
