@@ -4,10 +4,13 @@ var request = require('request');
 var cheerio = require('cheerio');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  request("https://www.imdb.com/chart/top?ref_=nv_mv_250", function(err, success){
+  request("https://www.imdb.com/chart/top?ref_=nv_mv_250", function(err, success, html){
   	if(success)
   	{
-  		return res.render("index", { data : success})
+  		var $ = cheerio.load(html);
+  		var movie = $(".seen-collection");
+  		// return res.render("index", { data : success})
+  		console.log(movie.html());
   	}
   	else
   	{
